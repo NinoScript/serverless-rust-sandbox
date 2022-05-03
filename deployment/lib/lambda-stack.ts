@@ -1,13 +1,12 @@
-import * as core from "@aws-cdk/core";
-import * as lambda from "@aws-cdk/aws-lambda";
-import * as s3 from "@aws-cdk/aws-s3";
-import * as cdk from "@aws-cdk/core";
+import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as s3 from "aws-cdk-lib/aws-s3";
+import * as cdk from "aws-cdk-lib";
 
 const { CDK_LOCAL } = process.env;
 
 interface Props {}
 
-export class LambdaStack extends core.Stack {
+export class LambdaStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props: Props) {
     super(scope, id);
 
@@ -34,7 +33,7 @@ export class LambdaStack extends core.Stack {
     entry.addEnvironment("AWS_NODEJS_CONNECTION_REUSE_ENABLED", "1");
 
     // Tag our resource.
-    core.Aspects.of(entry).add(new cdk.Tag("service-type", "API"));
-    core.Aspects.of(entry).add(new cdk.Tag("billing", `lambda-${entryFnName}`));
+    cdk.Aspects.of(entry).add(new cdk.Tag("service-type", "API"));
+    cdk.Aspects.of(entry).add(new cdk.Tag("billing", `lambda-${entryFnName}`));
   }
 }

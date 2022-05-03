@@ -5,7 +5,7 @@ import {
   UpdateFunctionConfigurationCommandInput,
   InvokeCommand,
   InvokeCommandInput,
-} from "@aws-sdk/client-lambda";
+} from "aws-sdk-lib/aws_lambda";
 import {
   XRayClient,
   GetTraceSummariesCommand,
@@ -14,7 +14,7 @@ import {
   BatchGetTracesCommandInput,
   TraceSummary,
   Trace,
-} from "@aws-sdk/client-xray";
+} from "aws-sdk-lib/client-xray";
 import * as fs from "fs";
 
 import * as pkg from "../package.json";
