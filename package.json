@@ -11,8 +11,8 @@
     "cdk"
   ],
   "scripts": {
-    "build": "rustup target add x86_64-unknown-linux-musl && cargo build --release --target x86_64-unknown-linux-musl && mkdir -p ./target/cdk/release && cp ./target/x86_64-unknown-linux-musl/release/bootstrap ./target/cdk/release/bootstrap",
-    "build:debug": "cargo build --target x86_64-unknown-linux-musl && mkdir -p ./target/cdk/release && cp ./target/x86_64-unknown-linux-musl/debug/bootstrap ./target/cdk/release/bootstrap",
+    "build": "rustup target add x86_64-unknown-linux-musl && cargo zigbuild --release --target x86_64-unknown-linux-musl && mkdir -p ./target/cdk/release && cp ./target/x86_64-unknown-linux-musl/release/bootstrap ./target/cdk/release/bootstrap",
+    "build:debug": "cargo zigbuild --target x86_64-unknown-linux-musl && mkdir -p ./target/cdk/release && cp ./target/x86_64-unknown-linux-musl/debug/bootstrap ./target/cdk/release/bootstrap",
     "build:archive": "(cd ./target/cdk/release/ && zip ./lambda.zip ./bootstrap) && mv ./target/cdk/release/lambda.zip ./lambda.zip",
     "build:clean": "rm -r ./target/cdk/release || echo '[build:clean] No existing release found.'",
     "deploy": "npm run build:clean && npm run build && npm run cdk:deploy",
